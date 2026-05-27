@@ -83,6 +83,10 @@ export function Sidebar({ activeDomain, activeNav, onNavChange, isOpen }: Sideba
       borderRight: '1px solid var(--border)',
       display: 'flex',
       flexDirection: 'column',
+      position: 'fixed',
+      top: 0,
+      left: 0,
+      bottom: 0,
     }}>
       {/* Logo */}
       <div style={{

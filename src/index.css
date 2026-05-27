@@ -221,6 +221,7 @@ html, body {
   .hamburger-btn { display: flex; }
 
   .main-content {
+    margin-left: 0 !important;
     padding: 60px 12px 20px !important;
   }
 

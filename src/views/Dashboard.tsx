@@ -105,7 +105,7 @@ function ClassifierPageWithDomainSync({ onDomainChange }: { onDomainChange: (d: 
         ))}
       </div>
 
-      {/* MIDDLE ROW — 60/40 */}
+      {/* MIDDLE ROW — input + configuration */}
       <div className="middle-grid">
         <motion.div key={domain} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.2 }} className="card">
           <div className="panel-header">
@@ -128,29 +128,6 @@ function ClassifierPageWithDomainSync({ onDomainChange }: { onDomainChange: (d: 
 
         <div className="card">
           <div className="panel-header">
-            <span className="panel-header__title">BAYESIAN CHAIN</span>
-            <span style={{ fontFamily: 'var(--font-mono)', fontSize: 10, color: 'var(--text-muted)', letterSpacing: '0.06em' }}>PRIOR → LIKELIHOOD → POST.</span>
-          </div>
-          <PriorPanel classes={result?.classes} priors={result?.prior_probs} />
-          <div className="divider" />
-          <LikelihoodTable result={result} currentText={text} />
-          <div className="divider" />
-          <PosteriorDisplay result={result} />
-        </div>
-      </div>
-
-      {/* BOTTOM ROW — 3 equal columns */}
-      <div className="bottom-grid">
-        <div className="card">
-          <div className="panel-header">
-            <span className="panel-header__title">FORMULA</span>
-            <Badge label="LIVE" variant="active" />
-          </div>
-          <FormulaPanel result={result} />
-        </div>
-
-        <div className="card">
-          <div className="panel-header">
             <span className="panel-header__title">CONFIGURATION</span>
             <Badge label={variant === 'multinomial' ? 'MNB' : 'BNB'} variant="active" />
           </div>
@@ -169,6 +146,29 @@ function ClassifierPageWithDomainSync({ onDomainChange }: { onDomainChange: (d: 
             <span style={{ color: 'var(--text-secondary)' }}>{tokens.length}</span>
             {' '}WORDS
           </div>
+        </div>
+      </div>
+
+      {/* LOWER ROW — chain + supporting panels */}
+      <div className="bottom-grid">
+        <div className="card">
+          <div className="panel-header">
+            <span className="panel-header__title">BAYESIAN CHAIN</span>
+            <span style={{ fontFamily: 'var(--font-mono)', fontSize: 10, color: 'var(--text-muted)', letterSpacing: '0.06em' }}>PRIOR → LIKELIHOOD → POST.</span>
+          </div>
+          <PriorPanel classes={result?.classes} priors={result?.prior_probs} />
+          <div className="divider" />
+          <LikelihoodTable result={result} currentText={text} />
+          <div className="divider" />
+          <PosteriorDisplay result={result} />
+        </div>
+
+        <div className="card">
+          <div className="panel-header">
+            <span className="panel-header__title">FORMULA</span>
+            <Badge label="LIVE" variant="active" />
+          </div>
+          <FormulaPanel result={result} />
         </div>
 
         <div className="card">

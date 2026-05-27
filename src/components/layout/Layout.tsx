@@ -34,7 +34,7 @@ export function Layout({ children, activeDomain, activeNav, onNavChange }: Layou
   }
 
   return (
-    <div style={{ display: 'flex', minHeight: '100vh', background: 'var(--bg)' }}>
+    <div style={{ display: 'flex', height: '100vh', overflow: 'hidden', background: 'var(--bg)' }}>
       {/* Backdrop — mobile only */}
       <div
         className={`sidebar-backdrop${sidebarOpen ? ' sidebar-backdrop--visible' : ''}`}
@@ -62,6 +62,7 @@ export function Layout({ children, activeDomain, activeNav, onNavChange }: Layou
         style={{
           flex: 1,
           minWidth: 0,
+          marginLeft: 200,
           overflow: 'auto',
           padding: '20px 24px',
           display: 'flex',
