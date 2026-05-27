@@ -6,6 +6,7 @@ interface SidebarProps {
   activeDomain: Domain;
   activeNav: NavId;
   onNavChange: (id: NavId) => void;
+  isOpen?: boolean;
 }
 
 const NAV_ITEMS: { id: NavId; label: string; icon: string }[] = [
@@ -75,16 +76,13 @@ const domainLabels: Record<Domain, string> = {
   sentiment: 'SENTIMENT',
 };
 
-export function Sidebar({ activeDomain, activeNav, onNavChange }: SidebarProps) {
+export function Sidebar({ activeDomain, activeNav, onNavChange, isOpen }: SidebarProps) {
   return (
-    <aside style={{
-      width: 200,
-      minHeight: '100vh',
+    <aside className={`sidebar${isOpen ? ' sidebar--open' : ''}`} style={{
       background: 'var(--bg-card)',
       borderRight: '1px solid var(--border)',
       display: 'flex',
       flexDirection: 'column',
-      flexShrink: 0,
     }}>
       {/* Logo */}
       <div style={{
@@ -94,6 +92,7 @@ export function Sidebar({ activeDomain, activeNav, onNavChange }: SidebarProps) 
         padding: '0 20px',
         borderBottom: '1px solid var(--border)',
         gap: 10,
+        flexShrink: 0,
       }}>
         <span style={{
           fontFamily: 'var(--font-mono)',
@@ -112,7 +111,7 @@ export function Sidebar({ activeDomain, activeNav, onNavChange }: SidebarProps) 
       </div>
 
       {/* Nav */}
-      <nav style={{ flex: 1, padding: '12px 0' }}>
+      <nav style={{ flex: 1, padding: '12px 0', overflowY: 'auto' }}>
         {NAV_ITEMS.map(item => {
           const isActive = activeNav === item.id;
           return (
@@ -150,6 +149,7 @@ export function Sidebar({ activeDomain, activeNav, onNavChange }: SidebarProps) 
       <div style={{
         padding: '16px 20px',
         borderTop: '1px solid var(--border)',
+        flexShrink: 0,
       }}>
         <div style={{
           fontSize: 10,

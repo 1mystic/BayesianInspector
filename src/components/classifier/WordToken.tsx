@@ -14,7 +14,7 @@ export function WordToken({ word, contribution, classes, isInVocab }: WordTokenP
 
   if (!isInVocab || !contribution) {
     return (
-      <span style={{ color: 'var(--text-muted)' }}>{word} </span>
+      <span style={{ color: 'var(--text-muted)' }}>{word}</span>
     );
   }
 
@@ -49,10 +49,8 @@ export function WordToken({ word, contribution, classes, isInVocab }: WordTokenP
       <span style={{
         color: overlayColor,
         opacity: overlayOpacity + 0.15,
-        fontWeight: delta > 1.5 ? 700 : 400,
         cursor: 'default',
       }}>{word}</span>
-      {' '}
 
       <AnimatePresence>
         {hovered && (

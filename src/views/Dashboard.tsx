@@ -87,7 +87,7 @@ function ClassifierPageWithDomainSync({ onDomainChange }: { onDomainChange: (d: 
   return (
     <>
       {/* TOP ROW — 4 stat cards */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 12 }}>
+      <div className="stat-grid">
         {[
           <StatCard title="ACTIVE WORDS" value={result?.n_words_found ?? 0} unit="IN VOCAB"
             badge={{ label: loading ? 'LOADING' : 'LIVE', variant: 'active' }} arrow />,
@@ -106,7 +106,7 @@ function ClassifierPageWithDomainSync({ onDomainChange }: { onDomainChange: (d: 
       </div>
 
       {/* MIDDLE ROW — 60/40 */}
-      <div style={{ display: 'grid', gridTemplateColumns: '60fr 40fr', gap: 12 }}>
+      <div className="middle-grid">
         <motion.div key={domain} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.2 }} className="card">
           <div className="panel-header">
             <span className="panel-header__title">NAIVE BAYES CLASSIFIER</span>
@@ -140,7 +140,7 @@ function ClassifierPageWithDomainSync({ onDomainChange }: { onDomainChange: (d: 
       </div>
 
       {/* BOTTOM ROW — 3 equal columns */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 12 }}>
+      <div className="bottom-grid">
         <div className="card">
           <div className="panel-header">
             <span className="panel-header__title">FORMULA</span>
