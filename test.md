@@ -1,16 +1,18 @@
-Here is the breakdown of the test samples, which model variant to test them against, and how a standard Naive Bayes (NB) model is expected to handle them versus what the true correct label should be.
+Here is a new set of real-world test samples for the updated model. These are designed to probe phishing language, obfuscated spam, sports/news ambiguity, health vocabulary, sarcasm, and negation handling.
 
 | Sample Text | Test Domain | Recommended NB Variant | Expected NB Guess | True Target Label |
 | --- | --- | --- | --- | --- |
-| "Hi Team, please review the updated Q3 corporate security policy attached. Human Resources requires all employees to verify their credentials via the internal portal by EOD..." | **Spam** | **Multinomial** (Checks word frequencies) | **Ham** (Overwhelmed by corporate jargon probabilities) | **Spam** (Phishing) |
-| "CONGRATULATIONS! You have won a free g!ft c@rd. Claim your pr1ze now at our webs1te." | **Spam** | **Bernoulli** (Checks presence/absence) | **Ham** (If the exact typos `g!ft`/`pr1ze` weren't in training, it treats them as neutral/unknown) | **Spam** |
-| "The Department of Justice launched an antitrust investigation into the football league's new broadcasting monopoly, calling for strict federal regulation..." | **News** | **Multinomial** | **Politics / Legal** (High frequency of government/legal terms) | **Sports** |
-| "Engineers successfully deployed a new open-source python framework utilizing neural networks... to automate real-time cardiac arrhythmia detection..." | **News** | **Multinomial** | **Tech** (Tech vocabulary heavily outnumbers medical terms) | **Health / Medicine** |
-| "Oh, fantastic. Another delayed flight and lost luggage. Truly a spectacular start to my vacation. Love it." | **Sentiment** | **Multinomial or Bernoulli** | **Positive** (Sees "fantastic", "spectacular", "love" as strong positive signals) | **Negative** (Sarcasm) |
-| "Do not skip this movie. It is not bad at all, and I wouldn't say it lacks excitement." | **Sentiment** | **Bernoulli** | **Negative** (Flags negative words like "bad" and "lacks" without understanding the negation "not") | **Positive** (Recommendation) |
+| "Your Microsoft 365 password will expire tonight. Please verify your account through the secure portal to avoid losing access to email and shared files." | **Spam** | **Multinomial** | **Ham** (Corporate/security language can overpower the phishing signal) | **Spam** |
+| "You have been selected for a free shipping reward. Cl!ck the l!nk now to claim your g1ft before the offer ends." | **Spam** | **Bernoulli** | **Ham** (Obfuscated tokens may be treated as unknown without normalization) | **Spam** |
+| "The city council approved funding for the new stadium after a long debate over parking, transit, and community impact." | **News** | **Multinomial** | **Politics** (Government language can dominate the sports context) | **Sports** |
+| "Researchers reported promising results from a clinical trial for a wearable heart monitor that detects irregular rhythms in real time." | **News** | **Multinomial** | **Tech** (Product and engineering language can outweigh the medical context) | **Health** |
+| "Fantastic, the train is delayed again and now my connection is gone. What a perfect start to the trip." | **Sentiment** | **Multinomial** | **Positive** (Positive words can mask the complaint tone) | **Negative** |
+| "I wouldn't call the movie bad at all, and I do not think it was boring or dull." | **Sentiment** | **Bernoulli** | **Negative** (Naive Bayes often overweights the negative keywords) | **Positive** |
+| "Breaking: the company reported quarterly earnings, but the stock fell after executives warned of softer demand in the next quarter." | **News** | **Multinomial** | **Tech / Business** (Corporate language can dominate the intended market-news framing) | **Politics / Business** |
+| "The clinic scheduled my follow-up after the surgery, and the doctor said the recovery plan looks good." | **News** | **Multinomial** | **Health** (This should be a clean health/medicine hit) | **Health** |
 
 ---
 
-> **Why this happens:** Naive Bayes operates on the "bag-of-words" assumption. It calculates probability based purely on individual token matches, completely ignoring sentence structure, syntax, or word order.
+> **Why this happens:** Naive Bayes uses the bag-of-words assumption. It scores documents from token presence and frequency, not sentence structure, negation scope, or sarcasm.
 
-If your model actually passes any of these, it means your training data had some highly specific features that managed to catch these edge cases!
+If the model gets some of these wrong, that is useful: the failures show where preprocessing, class coverage, or word weights still need improvement.

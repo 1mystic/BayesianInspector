@@ -224,7 +224,7 @@ export function AboutView() {
                 </span>
               </div>
               <p style={{ fontFamily: 'var(--font-ui)', fontSize: 12, color: 'var(--text-muted)', lineHeight: 1.6 }}>
-                18,846 newsgroup posts across 20 categories. BayesInspector uses a 4-category subset:
+                18,846 newsgroup posts across 20 categories. BayesInspector uses a 5-category subset:
                 tech, sports, politics, entertainment, health. Equal 20% priors.
               </p>
             </div>
@@ -251,6 +251,13 @@ export function AboutView() {
             <Row label="TOTAL BUNDLE"        value="~90KB gzipped" />
             <Row label="MODEL DATA"          value="~10KB gzipped (all 3)" />
             <Row label="DEPLOYMENT"          value="Cloudflare Pages static site" />
+          </Section>
+
+          <Section title="LIMITATIONS" delay={0.2}>
+            <Row label="SARCASM" value="Still a weak spot for bag-of-words NB" />
+            <Row label="NEGATION" value="Short windows help, but scope is imperfect" />
+            <Row label="AMBIGUITY" value="News/business overlaps can still blur classes" />
+            <Row label="TRADEOFF" value="Explainability over perfect accuracy" accent />
           </Section>
         </div>
       </div>
