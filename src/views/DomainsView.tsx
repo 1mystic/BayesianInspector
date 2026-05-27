@@ -143,7 +143,7 @@ function ModelCard({ model, index }: { model: ModelData; index: number }) {
         }}>TOP WORDS BY CLASS</div>
         <div style={{
           display: 'grid',
-          gridTemplateColumns: `repeat(${Math.min(model.classes.length, 4)}, 1fr)`,
+          gridTemplateColumns: `repeat(${Math.min(model.classes.length, 5)}, 1fr)`,
           gap: 16,
         }}>
           {model.classes.map((cls, ci) => {
@@ -252,8 +252,8 @@ export function DomainsView() {
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 12, marginBottom: 4 }}>
         {[
           { label: 'TOTAL DOMAINS',  value: '3', sub: 'SPAM · NEWS · SENTIMENT' },
-          { label: 'TOTAL VOCAB',    value: '311', sub: '121 + 100 + 90 WORDS' },
-          { label: 'TOTAL CLASSES',  value: '8', sub: '2 + 4 + 2 CLASSES' },
+          { label: 'TOTAL VOCAB',    value: '361', sub: '131 + 125 + 105 WORDS' },
+          { label: 'TOTAL CLASSES',  value: '9', sub: '2 + 5 + 2 CLASSES' },
         ].map((s, i) => (
           <motion.div
             key={s.label}

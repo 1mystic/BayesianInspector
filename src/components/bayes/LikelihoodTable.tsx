@@ -1,5 +1,6 @@
 import { DotBar } from '../classifier/ClassScore';
 import type { ClassificationResult } from '../../engine/types';
+import { tokenize } from '../../engine/tokenizer';
 
 interface LikelihoodTableProps {
   result: ClassificationResult | null;
@@ -32,7 +33,7 @@ export function LikelihoodTable({ result, currentText }: LikelihoodTableProps) {
     );
   }
 
-  const inputWords = new Set(currentText.toLowerCase().split(/\s+/));
+  const inputWords = new Set(tokenize(currentText));
   const nCols = Math.min(result.classes.length, 2);
 
   return (

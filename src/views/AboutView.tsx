@@ -134,7 +134,7 @@ export function AboutView() {
             <PipelineStep
               step="01"
               label="USER TYPES TEXT"
-              desc="Input is debounced 300ms then tokenized — lowercased, punctuation stripped, minimum 2-char tokens."
+              desc="Input is debounced 300ms then tokenized — lowercased, leetspeak-normalized, punctuation stripped, and negations are marked."
             />
             <PipelineStep
               step="02"
@@ -164,13 +164,13 @@ export function AboutView() {
 
           {/* Model stats */}
           <Section title="MODEL STATISTICS" delay={0.1}>
-            <Row label="SPAM MODEL — VOCAB"     value="121 words" />
+            <Row label="SPAM MODEL — VOCAB"     value="131 words" />
             <Row label="SPAM MODEL — CLASSES"   value="spam, ham" />
             <Row label="SPAM MODEL — PRIORS"    value="40% / 60%" />
-            <Row label="NEWS MODEL — VOCAB"     value="100 words" />
-            <Row label="NEWS MODEL — CLASSES"   value="tech, sports, politics, entertainment" />
-            <Row label="NEWS MODEL — PRIORS"    value="25% each (equal)" />
-            <Row label="SENTIMENT — VOCAB"      value="90 words" />
+            <Row label="NEWS MODEL — VOCAB"     value="125 words" />
+            <Row label="NEWS MODEL — CLASSES"   value="tech, sports, politics, entertainment, health" />
+            <Row label="NEWS MODEL — PRIORS"    value="20% each (equal)" />
+            <Row label="SENTIMENT — VOCAB"      value="105 words" />
             <Row label="SENTIMENT — CLASSES"    value="positive, negative" />
             <Row label="SENTIMENT — PRIORS"     value="50% / 50% (equal)" accent />
           </Section>
@@ -225,7 +225,7 @@ export function AboutView() {
               </div>
               <p style={{ fontFamily: 'var(--font-ui)', fontSize: 12, color: 'var(--text-muted)', lineHeight: 1.6 }}>
                 18,846 newsgroup posts across 20 categories. BayesInspector uses a 4-category subset:
-                tech, sports, politics, entertainment. Equal 25% priors.
+                tech, sports, politics, entertainment, health. Equal 20% priors.
               </p>
             </div>
             <div style={{ paddingTop: 12, borderTop: '1px solid var(--border)' }}>
@@ -249,8 +249,8 @@ export function AboutView() {
             <Row label="MODEL FORMAT"        value="Pre-baked JSON weights" />
             <Row label="RUNTIME ML LIBS"     value="ZERO — pure TypeScript" />
             <Row label="TOTAL BUNDLE"        value="~90KB gzipped" />
-            <Row label="MODEL DATA"          value="~8KB gzipped (all 3)" />
-            <Row label="DEPLOYMENT"          value="Vercel static site" />
+            <Row label="MODEL DATA"          value="~10KB gzipped (all 3)" />
+            <Row label="DEPLOYMENT"          value="Cloudflare Pages static site" />
           </Section>
         </div>
       </div>
