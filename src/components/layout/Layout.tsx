@@ -1,9 +1,9 @@
-import React from 'react';
+import type { ReactNode } from 'react';
 import { Sidebar } from './Sidebar';
 import type { Domain } from '../../engine';
 
 interface LayoutProps {
-  children: React.ReactNode;
+  children: ReactNode;
   activeDomain: Domain;
 }
 

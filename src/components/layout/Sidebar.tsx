@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import type { Domain } from '../../engine';
 
 interface SidebarProps {

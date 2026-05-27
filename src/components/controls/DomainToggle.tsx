@@ -1,4 +1,3 @@
-import React from 'react';
 import type { Domain } from '../../engine';
 
 interface DomainToggleProps {

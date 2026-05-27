@@ -1,4 +1,3 @@
-import React from 'react';
 import { DotBar } from '../classifier/ClassScore';
 import type { ClassificationResult } from '../../engine/types';
 

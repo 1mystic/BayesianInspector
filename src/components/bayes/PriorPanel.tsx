@@ -1,4 +1,3 @@
-import React from 'react';
 import { DotBar } from '../classifier/ClassScore';
 
 interface PriorPanelProps {
