@@ -107,6 +107,7 @@ export function classify(
     word_contributions: wordContributions,
     top_words_per_class: topWordsPerClass,
     prior_probs: priorProbs,
+    class_log_priors: model.class_log_priors,
     n_words_found: wordsFound,
     processing_ms: performance.now() - t0,
   };

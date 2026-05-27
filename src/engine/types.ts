@@ -29,6 +29,7 @@ export interface ClassificationResult {
   word_contributions: WordContribution[];
   top_words_per_class: Array<{ word: string; prob: number }>[];
   prior_probs: number[];
+  class_log_priors: number[];
   n_words_found: number;
   processing_ms: number;
 }
