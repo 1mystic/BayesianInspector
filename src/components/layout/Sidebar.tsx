@@ -1,16 +1,19 @@
-import { useState } from 'react';
 import type { Domain } from '../../engine';
+
+export type NavId = 'classifier' | 'domains' | 'formula' | 'about';
 
 interface SidebarProps {
   activeDomain: Domain;
+  activeNav: NavId;
+  onNavChange: (id: NavId) => void;
 }
 
-const NAV_ITEMS = [
+const NAV_ITEMS: { id: NavId; label: string; icon: string }[] = [
   { id: 'classifier', label: 'CLASSIFIER', icon: 'grid' },
   { id: 'domains',    label: 'DOMAINS',    icon: 'layers' },
   { id: 'formula',   label: 'FORMULA',    icon: 'math' },
   { id: 'about',     label: 'ABOUT',      icon: 'info' },
-] as const;
+];
 
 function GridIcon() {
   return (
@@ -72,9 +75,7 @@ const domainLabels: Record<Domain, string> = {
   sentiment: 'SENTIMENT',
 };
 
-export function Sidebar({ activeDomain }: SidebarProps) {
-  const [activeNav, setActiveNav] = useState<string>('classifier');
-
+export function Sidebar({ activeDomain, activeNav, onNavChange }: SidebarProps) {
   return (
     <aside style={{
       width: 200,
@@ -117,7 +118,7 @@ export function Sidebar({ activeDomain }: SidebarProps) {
           return (
             <button
               key={item.id}
-              onClick={() => setActiveNav(item.id)}
+              onClick={() => onNavChange(item.id)}
               style={{
                 display: 'flex',
                 alignItems: 'center',
